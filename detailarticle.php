@@ -88,11 +88,9 @@ session_start();
 				$sql1 = "update article set views= (views +1) where kode = '$id'";
 				$res_data1 = mysqli_query($koneksi, $sql1);
 
-				
-                $sqlgetviewmonth = "select count(1) valCount from monthly_view where DATE_FORMAT(datevalue, '%Y%m')= DATE_FORMAT(CURRENT_DATE, '%Y%m')";
+				$sqlgetviewmonth = "select count(1) valCount from monthly_view where DATE_FORMAT(datevalue, '%Y%m')= DATE_FORMAT(CURRENT_DATE, '%Y%m')";
 				$resViewMont = mysqli_query($koneksi, $sqlgetviewmonth);
-                
-                
+
 				$dataView = mysqli_fetch_array($resViewMont);
 				$updateViewExists = "insert into monthly_view values(CURRENT_DATE, 1)";
 				$updateViewNotExists = "update monthly_view set viewvalue = (viewvalue +1) where
@@ -105,9 +103,9 @@ session_start();
 					$res_update2 = mysqli_query($koneksi, $updateViewNotExists);
 				}
 
-                $sql = "SELECT * FROM article where kode= '$id'";
+
+				$sql = "SELECT * FROM article where kode= '$id'";
 				$res_data = mysqli_query($koneksi, $sql);
-                
 
 				$data = mysqli_fetch_array($res_data);
 
@@ -135,7 +133,7 @@ session_start();
 
 						</div>
 
-						<img class="img-thumbnail" src="admin/images/Article/<?php echo $data['picture']  ?>">
+						<img class="img-thumbnail" src="admin/images/Article/<?php echo $data['picture']  ?>"><br>
 						<div style="font-style:italic; color: #B46A5A"><?php echo $data['image_caption'] ?></div>
 						<p><?php echo $data['content'] ?></p>
 
@@ -166,12 +164,7 @@ session_start();
 						<div class="post-block">
 							<h3><i class="fa fa-commenting"></i>Leave a comment</h3>
 							<form action="" method="post">
-								<div class="form-group">
-									<label>Your name *</label>
-									<input type="text" value="" maxlength="100" placeholder="Name..." class="form-control" name="nameComment" id="nameComment">
-									<label>Your email address *</label>
-									<input type="email" value="" maxlength="100" placeholder="Email Address..." class="form-control" name="emailComment" id="emailComment">
-								</div>
+
 								<div class="form-group">
 									<label>Comment *</label>
 									<textarea maxlength="5000" rows="5" placeholder="Comment..." class="form-control textarea2" name="comment" id="comment1"></textarea>
@@ -261,11 +254,13 @@ session_start();
 										<?php
 
 										$sql2 = "SELECT a.*, ac.category_name,
-													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+													(select count(1) from comments c 
+														join comments_detail cd on cd.id_comment = c.id_comment
+													where c.status='1' and c.id_article = a.id_article) c_commentd
 												 FROM article a 
-															join article_category ac on ac.id_category = a.id_category
-															where a.created_dt >= DATE_ADD(sysdate(), INTERVAL -30 DAY)
-																order by views desc limit 5";
+															join article_category ac on ac.id_category = a.id_category 
+																order by likes desc limit 5";
 										$result2 = mysqli_query($koneksi, $sql2);
 										$no_urut2 = 0;
 										$dateStr2 = "";
@@ -277,6 +272,8 @@ session_start();
 
 											while ($data2 = mysqli_fetch_array($result2)) {
 
+												$countComment = $data2['c_comment'] + $data2['c_commentd'];
+												
 												if ($data2['changed_dt'] != null && $data2['changed_dt'] != '0000-00-00') {
 													$dateStr2 = date_format(new DateTime($data2['changed_dt']), 'd-M-Y');
 												}
@@ -288,16 +285,19 @@ session_start();
 													<div class="post-image">
 														<div class="img-thumbnail">
 															<a href="?menu=detailarticle&id=<?php echo $data2['kode'] ?>">
-																<img style="width:100px;max-height:60px" class="" src=" admin/images/Article/<?php echo $data2['picture']  ?>"> </a> </div> </div> <div class="post-info">
-																<a href="?menu=detailarticle&id=<?php echo $data2['kode'] ?>">
-																	<h6 style="line-height: 18px;"><?php echo $data2['title'] ?></h6>
-																</a>
-																<div class="post-meta" style="color:#666">
-																	<?php echo $date1Str2 ?>&nbsp; &#9900; &nbsp; <?php echo $data2['c_comment'] ?> Comments <br>
-																</div>
-
-
+																<img style="width:100px; class="" src=" admin/images/Article/<?php echo $data2['picture']  ?>"> </a>
 														</div>
+													</div>
+													<div class="post-info">
+														<a href="?menu=detailarticle&id=<?php echo $data2['kode'] ?>">
+															<h6 style="line-height: 18px;"><?php echo $data2['title'] ?></h6>
+														</a>
+														<div class="post-meta" style="color:#666">
+															<?php echo $date1Str2 ?>&nbsp; &#9900; &nbsp; <?php echo $countComment ?> Comments <br>
+														</div>
+
+
+													</div>
 												</li>
 
 										<?php }
@@ -310,10 +310,13 @@ session_start();
 										<?php
 
 										$sql3 = "SELECT a.*, ac.category_name,
-													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+													(select count(1) from comments c 
+															join comments_detail cd on cd.id_comment = c.id_comment
+														where c.status='1' and c.id_article = a.id_article) c_commentd
 												 FROM article a 
 															join article_category ac on ac.id_category = a.id_category 
-																where a.created_dt  >= CURDATE() - INTERVAL 30 DAY
+																where a.created_dt  >= CURDATE() - INTERVAL 7 DAY
 																order by created_dt desc limit 5";
 										$result3 = mysqli_query($koneksi, $sql3);
 										$no_urut3 = 0;
@@ -325,6 +328,7 @@ session_start();
 										} else {
 
 											while ($data3 = mysqli_fetch_array($result3)) {
+												$countComment = $data3['c_comment'] + $data3['c_commentd'];
 
 												if ($data3['changed_dt'] != null && $data3['changed_dt'] != '0000-00-00') {
 													$dateStr3 = date_format(new DateTime($data3['changed_dt']), 'd-M-Y');
@@ -337,19 +341,23 @@ session_start();
 													<div class="post-image">
 														<div class="img-thumbnail">
 															<a href="?menu=detailarticle&id=<?php echo $data3['kode'] ?>">
-																<img style="width:100px;max-height:60px" class="" src=" admin/images/Article/<?php echo $data3['picture']  ?>"> </a> </div> </div> <div class="post-info">
-																<a href="?menu=detailarticle&id=<?php echo $data3['kode'] ?>">
-																	<h6 style="line-height: 18px;"><?php echo $data3['title'] ?></h6>
-																</a>
-																<div class="post-meta" style="color:#666">
-																	<?php echo $date1Str3 ?> &nbsp; &#9900; &nbsp; <?php echo $data3['c_comment'] ?> Comments
-																</div>
-
-
+																<img style="width:100px; class="" src=" admin/images/Article/<?php echo $data3['picture']  ?>"> </a>
 														</div>
+													</div>
+													<div class="post-info">
+														<a href="?menu=detailarticle&id=<?php echo $data3['kode'] ?>">
+															<h6 style="line-height: 18px;"><?php echo $data3['title'] ?></h6>
+														</a>
+														<div class="post-meta" style="color:#666">
+															<?php echo $date1Str3 ?> &nbsp; &#9900; &nbsp; <?php echo $countComment ?> Comments
+														</div>
+
+
+													</div>
 												</li>
 
 										<?php }
+										
 										} ?>
 
 
@@ -378,15 +386,21 @@ session_start();
 					<div class="widget">
 						<div id="datepicker" style="text-align:center; color:#000"></div>
 					</div>
-
+					<!--
 					<div class="widget" style="text-align: center">
 						<div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="kris-banarto-52a8a054"><a class="LI-simple-link" href='https://id.linkedin.com/in/kris-banarto-52a8a054?trk=profile-badge'>Kris Banarto</a></div>
 					</div>
+					-->
 				</aside>
 			</div>
 		</div>
 	</div>
 </section>
+
+
+<input type="hidden" value="<?php echo $_SESSION['EMAIL'] ?>" id="sesEmail">
+<input type="hidden" value="<?php echo $_SESSION['NAME'] ?>" id="sesName">
+<input type="hidden" value="<?php echo $_SESSION['IMAGE'] ?>" id="sesImage">
 
 <script>
 	$('.textarea2').on('keyup input', function() {
@@ -449,42 +463,27 @@ session_start();
 	function submitComment() {
 
 		var sesEmail = "<?php echo $_SESSION['EMAIL']; ?>";
+		var sesName = "<?php echo $_SESSION['NAME']; ?>";
+		var sesImage = "<?php echo $_SESSION['IMAGE']; ?>";
 
 		var comment1 = $('#comment1').val();
 		var idArticle = $('#idArticle').val();
-		var nameComment = $('#nameComment').val();
-		var emailComment = $('#emailComment').val();
+		var nameComment = sesName;
+		var emailComment = sesEmail;
 		var idComment = $('#idComment').val();
 		var idMember = sesEmail;
 		var action = '';
 
-		/*
-		if(idMember == '' || idMember == null)  
-		{  
-			showErrorMesgGrowl("Please login to add comment to this article");  
-			return false;  
-		}
-		*/
 
-		if (nameComment == '' || nameComment == null) {
-			$('#nameComment').focus();
-			showErrorMesgGrowl("Please Input your name");
-			return false;
-		}
+		if (idMember == '' || idMember == null) {
+			showErrorMesgGrowl("Please login to add comment to this article");
 
-		if (emailComment == '' || emailComment == null) {
-			$('#emailComment').focus();
-			showErrorMesgGrowl("Please input your email address");
+			setTimeout(function() {
+
+				window.location.href = "index.php?menu=login";
+
+			}, 2000);
 			return false;
-		} else {
-			$('#emailComment').focus();
-			var atps = emailComment.indexOf("@");
-			var dots = emailComment.lastIndexOf(".");
-			if (atps < 1 || dots < atps + 2 || dots + 2 >= emailComment.length) {
-				showErrorMesgGrowl("Email is not valid.");
-				//alert("Email is not valid.");
-				return false;
-			}
 		}
 
 		if (comment1 == '' || comment1 == null) {
@@ -501,8 +500,8 @@ session_start();
 		formData.append("idArticle", idArticle);
 		formData.append("idComment", idComment);
 		formData.append("idMember", idMember);
+		formData.append("imageG", sesImage);
 		formData.append("action", action);
-
 
 		$.ajax({
 			url: "savecomment.php",
@@ -551,12 +550,7 @@ session_start();
 		if (d.getElementById(id)) return;
 		js = d.createElement(s);
 		js.id = id;
-		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-	
-	
-	
-	
-	
 </script>

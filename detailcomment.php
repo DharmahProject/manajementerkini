@@ -23,16 +23,25 @@ $id = $_POST['id'];
 $sqlCount = "select count(1) comments FROM article a  
 				join comments c on c.id_article = a.id_article
 			where kode= '$id' and c.status='1'";
+			
+$sqlCountDetail = "select count(1) comments FROM article a  
+				join comments c on c.id_article = a.id_article
+				join comments_detail cd on cd.id_comment = c.id_comment
+			where kode= '$id' and c.status='1'";
 
 $Count = mysqli_query($koneksi, $sqlCount);
+$CountDetail = mysqli_query($koneksi, $sqlCountDetail);
 
 $dataCount = mysqli_fetch_array($Count);
+$dataCountDetail = mysqli_fetch_array($CountDetail);
 
-$total = $dataCount['comments'];
+$total = $dataCount['comments'] + $dataCountDetail['comments'];
 
 ?>
 
 <input type="hidden" value="<?php echo $_SESSION['EMAIL'] ?>" id="sesEmail">
+<input type="hidden" value="<?php echo $_SESSION['NAME'] ?>" id="sesName">
+<input type="hidden" value="<?php echo $_SESSION['IMAGE'] ?>" id="sesImage">
 
 <div class="post-block clearfix">
 	<h3><i class="fa fa-comments"></i>Comments (<?php echo $total ?>)</h3>
@@ -58,9 +67,11 @@ $total = $dataCount['comments'];
 				<div class="comment">
 					<div class="img-thumbnail">
 						<?php
-
-						echo "<img class='avatar' alt='' src='img/member/img.png'>";
-
+						if ($dataC['image'] == 'img1.png') {
+							echo "<img class='avatar' alt='' src='img/member/$dataC[image]'>";
+						} else {
+							echo "<img class='avatar' alt='' src='$dataC[image]'>";
+						}
 						?>
 					</div>
 					<div class="comment-block">
@@ -115,22 +126,15 @@ $total = $dataCount['comments'];
 					<?php } ?>
 
 					<li class="<?php echo $dataC['id_article'] ?>_<?php echo $dataC['id_comment'] ?>">
+						
 						<div class="comment">
-
-							<!--
-						<div class="comment-block" style="padding:10px 0px">
-								<div class="row" style="margin-bottom:5px">
-									<div class="col-lg-6 col-md-6">
-										<input type="text" Placeholder="Name.." id="title" class="form-control"  name="" value="">
-									</div>
-									<div class="col-lg-6 col-md-6">
-										<input type="text" Placeholder="Email.." id="author" class="form-control"  name="" value="">
-									</div>
-								</div>
-							<textarea maxlength="5000" rows="1" idArticle="<?php echo $dataC['id_article'] ?>" idComment="<?php echo $dataC['id_comment'] ?>" placeholder="Reply..." class="form-control textarea1" ></textarea>
+									
+									
 							
+						<div class="comment-block" style="padding:10px 0px">
+							<textarea maxlength="5000" rows="1" idArticle="<?php echo $dataC['id_article'] ?>" idComment="<?php echo $dataC['id_comment'] ?>" placeholder="Reply..." class="form-control textarea1" ></textarea>
 						</div>
-						-->
+						
 						</div>
 					</li>
 				</ul>
@@ -146,21 +150,36 @@ $total = $dataCount['comments'];
 
 		if ((e.keyCode || e.which) == 13) {
 
-			var ses1Email = $("#sesEmail").val();
+
+			var sesEmail = $('#sesEmail').val(); 
+			var sesName = $('#sesName').val(); 
+			var sesImage = $('#sesName').val(); 
 
 			var idArticle = $(this).attr("idArticle");
 			var idComment = $(this).attr("idComment");
-			var idMember = ses1Email;
+			var idMember = sesEmail;
+			var idMember = sesEmail;
+			var imageG = sesImage;
 			var comment = $(this).val();
 			var action = 'detail';
 
 			if (idMember == '' || idMember == null || idMember == undefined || idMember == "undefined") {
 				showErrorMesgGrowl("Please login to add comment to this article");
+				setTimeout(function() {
+
+				window.location.href = "index.php?menu=login";
+
+				}, 2000);
 				return false;
 			}
 
 			if (idMember.substring(1, 3) == "br") {
 				showErrorMesgGrowl("Please login to add comment to this article");
+				setTimeout(function() {
+
+				window.location.href = "index.php?menu=login";
+
+				}, 2000);
 				return false;
 			}
 
@@ -169,8 +188,9 @@ $total = $dataCount['comments'];
 			formData.append("comment", comment);
 			formData.append("idArticle", idArticle);
 			formData.append("idComment", idComment);
-			formData.append("idMember", idMember);
+			formData.append("emailComment", idMember);
 			formData.append("action", action);
+			formData.append("imageG", sesImage);
 
 			$.ajax({
 				url: "savecomment.php",

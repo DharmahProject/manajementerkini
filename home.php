@@ -324,14 +324,14 @@ session_start();
 						$dateProp = date_format(new DateTime($dataProp['created_dt']), 'd-M-Y');
 					?>
 
-						<div class="single_featured_slide"> <a href="pages/single.html"><img src="admin/images/Article/<?php echo $dataProp['picture'] ?>" alt="" style=""></a>
+						<div class="single_featured_slide"> <a href="?menu=detailarticle&id=<?php echo $dataProp['kode'] ?>"><img src="admin/images/Article/<?php echo $dataProp['picture'] ?>" alt="" style=""></a>
 							<div class="post-meta" style="padding-top:15px; color:#BDB76B">
 								<i class="fa fa-calendar"></i> <?php echo $dateProp ?> &nbsp;
 								<i class="fa fa-eye"></i> <?php echo $dataProp['views'] ?> Views &nbsp;
 								<i class="fa fa-comments"></i> <?php echo $dataProp['c_comment'] ?> Comments
 							</div>
 
-							<h2><a href="pages/single.html"><?php echo $dataProp['title'] ?></a></h2>
+							<h2><a href="?menu=detailarticle&id=<?php echo $dataProp['kode'] ?>"><?php echo $dataProp['title'] ?></a></h2>
 							<p style="font-size:14px"><?php echo strip_tags(substr($dataProp['content'], 0, 300))  ?> ...</p>
 						</div>
 
@@ -368,9 +368,9 @@ session_start();
 
 
 						<li>
-							<div class="media wow fadeInDown"> <a class="media-left" href="#"><img src="admin/images/Article/<?php echo $dataC1['picture'] ?>" alt=""></a>
+							<div class="media wow fadeInDown"> <a class="media-left" href="?menu=detailarticle&id=<?php echo $dataC1['kode'] ?>"><img src="admin/images/Article/<?php echo $dataC1['picture'] ?>" alt=""></a>
 								<div class="media-body">
-									<h4 class="media-heading"><a href="#">
+									<h4 class="media-heading"><a href="?menu=detailarticle&id=<?php echo $dataC1['kode'] ?>">
 											<h5 style="line-height: 1.1;"><?php echo $dataC1['title'] ?> </h5>
 										</a></h4>
 									<div class="comments_box">

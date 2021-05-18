@@ -50,7 +50,10 @@
 						<?php
 							
 							$sql1 = "SELECT a.*,
-								(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+								(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+											join comments_detail cd on cd.id_comment = c.id_comment
+									where c.status='1' and c.id_article = a.id_article) c_commentd
+
 							 FROM article a 
 										join article_category ac on ac.id_category = a.id_category 
 										where tags = '$tags'
@@ -61,13 +64,14 @@
 							
 							$data1 = mysqli_fetch_array($result1);
 							
+							$countComment = $data1['c_comment'] + $data1['c_commentd'];
+							
 							if(mysqli_num_rows($result1) < 1)  {
 								echo "";
 							}
 							else
 							{
 								$date1Str1 = date_format (new DateTime($data1['created_dt']), 'd-M-Y h:i:s');
-							
 						?>
 							
 							<div class="blog-listing">
@@ -79,7 +83,7 @@
 										<i class="fa fa-calendar"></i> <?php echo $date1Str1 ?> &nbsp;
 										<i class="fa fa-user"></i> By : <?php echo $data1['author'] ?> &nbsp;
 										<i class="fa fa-eye"></i> <?php echo $data1['views'] ?> Views &nbsp;
-										<i class="fa fa-comments"></i> <?php echo $data1['c_comment'] ?> Comments
+										<i class="fa fa-comments"></i> <?php echo $$countComment ?> Comments
 									</div>
 								<p >
 									<span><?php  echo substr($data1['content'],0,700)  ?> ... </span>
@@ -99,7 +103,10 @@
 						<?php
 							
 							$sql = "SELECT a.*,
-								(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+								(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+								(select count(1) from comments c 
+									join comments_detail cd on cd.id_comment = c.id_comment
+								where c.status='1' and c.id_article = a.id_article) c_commentd
 							 FROM article a 
 										join article_category ac on ac.id_category = a.id_category 
 										where tags = '$tags'
@@ -124,6 +131,8 @@
 							
 							while ($data = mysqli_fetch_array($result)) {
 								
+								$countComment = $data['c_comment'] + $data['c_commentd'];
+								
 								if ($data['changed_dt'] != null && $data['changed_dt'] != '0000-00-00')
 								{
 									$dateStr = date_format (new DateTime($data['changed_dt']), 'd-M-Y h:i:s');
@@ -143,7 +152,7 @@
 												<i class="fa fa-calendar"></i> <?php echo $date1Str ?> &nbsp;
 												<i class="fa fa-user"></i> By : <?php echo $data['author'] ?> &nbsp;<br>
 												<i class="fa fa-eye"></i> <?php echo $data['views'] ?> Views &nbsp;
-												<i class="fa fa-comments"></i> <?php echo $data['c_comment'] ?> Comments
+												<i class="fa fa-comments"></i> <?php echo $countComment ?> Comments
 											</div>
 										
 										<div style="min-height:85px">
@@ -222,7 +231,10 @@
                                             
 											<?php
 												$sql2 = "SELECT a.*, ac.category_name,
-													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+													(select count(1) from comments c 
+														join comments_detail cd on cd.id_comment = c.id_comment
+													where c.status='1' and c.id_article = a.id_article) c_commentd
 												 FROM article a 
 															join article_category ac on ac.id_category = a.id_category 
 																where a.created_dt  >= CURDATE() - INTERVAL 30 DAY
@@ -239,6 +251,8 @@
 												{
 												
 												while ($data2 = mysqli_fetch_array($result2)) {
+													
+													$countComment = $data2['c_comment'] + $data2['c_commentd'];
 													
 													if ($data2['changed_dt'] != null && $data2['changed_dt'] != '0000-00-00')
 													{
@@ -259,7 +273,7 @@
                                                 <div class="post-info">
                                                     <a href="?menu=detailarticle&id=<?php echo $data2['kode'] ?>"><h6 style="line-height: 18px;"><?php echo $data2['title'] ?></h6></a>
                                                     <div class="post-meta" style="color:#666">
-                                                        <?php echo $date1Str2 ?>&nbsp; &#9900; &nbsp; <?php echo $data2['c_comment'] ?> Comments  <br>
+                                                        <?php echo $date1Str2 ?>&nbsp; &#9900; &nbsp; <?php echo $countComment ?> Comments  <br>
                                                     </div>
                                                 </div>
                                             </li>
@@ -273,7 +287,10 @@
 											<?php
 							
 												$sql3 = "SELECT a.*, ac.category_name,
-													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+													(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+													(select count(1) from comments c 
+															join comments_detail cd on cd.id_comment = c.id_comment
+														where c.status='1' and c.id_article = a.id_article) c_commentd
 												 FROM article a 
 															join article_category ac on ac.id_category = a.id_category 
 																where a.created_dt  >= CURDATE() - INTERVAL 30 DAY
@@ -290,6 +307,8 @@
 												{
 												
 												while ($data3 = mysqli_fetch_array($result3)) {
+													
+													$countComment = $data3['c_comment'] + $data3['c_commentd'];
 													
 													if ($data3['changed_dt'] != null && $data3['changed_dt'] != '0000-00-00')
 													{
@@ -310,7 +329,7 @@
                                                 <div class="post-info">
                                                     <a href="?menu=detailarticle&id=<?php echo $data3['kode'] ?>"><h6 style="line-height: 18px;"><?php echo $data3['title'] ?></h6></a>
                                                     <div class="post-meta" style="color:#666">
-                                                        <?php echo $date1Str3 ?>  &nbsp; &#9900; &nbsp; <?php echo $data3['c_comment'] ?> Comments														
+                                                        <?php echo $date1Str3 ?>  &nbsp; &#9900; &nbsp; <?php echo $countComment ?> Comments														
                                                     </div>
 													
 													
