@@ -14,7 +14,10 @@
     }
 	
     $sql = "SELECT a.*,
-			(select count(1) from comments where id_article = a.id_article and status ='1') c_comment
+			(select count(1) from comments where id_article = a.id_article and status ='1') c_comment,
+			(select count(1) from comments c 
+					join comments_detail cd on cd.id_comment = c.id_comment
+				where c.status='1' and c.id_article = a.id_article) c_commentd
 			 FROM article a
 				join article_category ac on ac.id_category = a.id_category 
 				where title like '%$cat%'	
@@ -28,6 +31,9 @@
     $res_data = mysqli_query($koneksi,$sql);
 
     while($data = mysqli_fetch_array($res_data)){
+		
+		$countComment = $data1['c_comment'] + $data1['c_commentd'];
+		
 		if ($data['changed_dt'] != null && $data['changed_dt'] != '0000-00-00')
 		{
 			$dateStr = date_format (new DateTime($data['changed_dt']), 'd-M-Y h:i:s');
@@ -47,7 +53,7 @@
 							<i class="fa fa-calendar"></i> <?php echo $date1Str ?> &nbsp;
 							<i class="fa fa-user"></i> By : <?php echo $data['author'] ?> &nbsp;<br>
 							<i class="fa fa-eye"></i> <?php echo $data['views'] ?> Views &nbsp;
-							<i class="fa fa-comments"></i> <?php echo $data['c_comment'] ?> Comments
+							<i class="fa fa-comments"></i> <?php echo $countComment ?> Comments
 						</div>
 					
 					<div style="min-height:85px">

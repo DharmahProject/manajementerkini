@@ -39,7 +39,7 @@ if($action == 'signIn')
 		/*session_is_registered('USERNAME');  */
 		$_SESSION['EMAIL']=$data[1];
 		$_SESSION['NAME']=$data[2];
-		$_SESSION['IMAGE']=$data[4];
+		$_SESSION['IMAGE']=$data[5];
 		
 		echo json_encode($data);
 	}
@@ -102,7 +102,7 @@ else if($action == 'signUp')
 			
 		$sql="INSERT INTO members
 			(email, password, name, image, status, created_dt) VALUES
-			('$userSU','$passSU', '$nameSU','img1.png', '1','$date')
+			('$userSU','$passSU', '$nameSU','$imageG', '1','$date')
 		";
 		
 		
@@ -120,7 +120,7 @@ else
 	{
 		$_SESSION['EMAIL']=$dataX[1];
 		$_SESSION['NAME']=$dataX[3];
-		$_SESSION['IMAGE']=$dataX[4];
+		$_SESSION['IMAGE']=$dataX[5];
 		
 		echo json_encode($dataX);
 	}
