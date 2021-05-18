@@ -1,0 +1,52 @@
+[11-Jan-2021 09:46:09 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 09:46:09 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 09:46:29 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 09:46:29 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 09:47:04 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 09:47:04 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 09:47:33 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 09:47:33 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 22:44:05 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 22:44:05 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 22:44:13 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 12
+[11-Jan-2021 22:44:13 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/humart/koneksi.php on line 15
+[11-Jan-2021 22:45:09 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:45:09 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:45:32 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:45:32 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:45:34 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:45:34 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:45:57 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:45:57 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:46:32 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:46:32 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:46:34 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:46:34 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:47:24 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:47:24 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:47:27 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:47:27 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:47:29 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:47:29 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:50:45 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:50:45 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:51:19 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:51:19 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[11-Jan-2021 22:55:06 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 12
+[11-Jan-2021 22:55:06 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Access denied for user 'root'@'localhost' (using password: NO) in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:05:22 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:05:22 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:57:38 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:57:38 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:57:45 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:57:45 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:57:49 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:57:49 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:58:20 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:58:20 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:58:41 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:58:41 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[30-Jan-2021 16:58:54 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/1040): Too many connections in /home/manh8362/public_html/koneksi.php on line 12
+[30-Jan-2021 16:58:54 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Too many connections in /home/manh8362/public_html/koneksi.php on line 15
+[06-Mar-2021 08:35:53 Asia/Jakarta] PHP Warning:  mysqli::__construct(): (HY000/2002): Connection refused in /home/manh8362/public_html/koneksi.php on line 12
+[06-Mar-2021 08:35:53 Asia/Jakarta] PHP Fatal error:  Koneksi ke database gagal: Connection refused in /home/manh8362/public_html/koneksi.php on line 15

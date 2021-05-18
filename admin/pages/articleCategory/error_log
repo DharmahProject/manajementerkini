@@ -1,0 +1,13 @@
+[17-Jan-2021 10:12:13 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 14
+[17-Jan-2021 10:12:34 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 14
+[17-Jan-2021 10:18:08 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:18:46 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:20:20 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:20:29 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:22:06 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:22:38 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:24:18 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:24:53 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:26:01 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:26:38 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
+[17-Jan-2021 10:28:00 Asia/Jakarta] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home/manh8362/public_html/admin/pages/articleCategory/proses_save.php on line 20
